@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Reservation Bay Car Rentals</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+	<script type="text/javascript" src="carreservation.js"></script>
+	<style>
+	input[type=date]::-webkit-inner-spin-button, 
+	input[type=date]::-webkit-outer-spin-button { 
+	  -webkit-appearance: none; 
+	  margin: 0; 
+	}
+	
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen 
+	and (min-device-width : 320px) 
+	and (max-device-width : 568px) {
+		.mobileLine {
+			display: block;
+		}
+	}
+	</style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Bay Car Rentals</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="./HomePage.html">Home</a></li>
+            <li class="active"><a href="./ReservationPage.html">Reserve</a></li>            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Reserve your Car!</h1>        
+        <span>Pickup Location</span>
+        <select name="city" onchange="selectCity(this);">
+            <option value="sanfrancisco">San Francisco</option>
+            <option value="losangeles">Los Angeles</option>
+            <option value="lasvegas">Las Vegas</option>
+        </select>
+        <!-- Surcharge -->
+        Surcharge: <span id="surcharge">15</span>%
+
+		<br>
+        <span class="mobileLine">When?</span>
+        <input id="startDate" type="date" required />
+		<br>
+        <span class="mobileLine">Return?</span>
+        <input id="endDate" type="date" required/>
+        <br>
+        Number of Days: <input type="number" id="numofdays" onchange="dayschanged(this);"/> 
+        Discount: <span id="discount">0</span>%<br><br>
+
+
+        <input type="radio" name="typeofcar" value="Compact" checked onclick="cartypeselected(this);">Compact $29.99 per day <br>
+        <input type="radio" name="typeofcar" value="MidSize" onclick="cartypeselected(this);"/>MidSize $39.99 per day <br>
+        <input type="radio" name="typeofcar" value="Luxury" onclick="cartypeselected(this);"/>Luxury $49.99 per day <br>
+
+        <!-- Compact Cars -->
+        <div>
+            <div id="compactcarimage">
+                <img src="2.png" alt=""/>
+                <img src="1.png" alt=""/>
+                <img src="10.png" alt=""/>
+            </div>
+            <div id="midsizecarimage" style="display:none;">
+                <img src="4.png" alt=""/>
+                <img src="5.png" alt=""/>
+                <img src="6.png" alt=""/>
+            </div>
+            <div id="luxurycarimage" style="display:none;">
+                <img src="7.png" alt=""/>
+                <img src="8.png" alt=""/>
+                <img src="9.png" alt=""/>
+            </div>
+        </div>
+
+        <!-- Optional Services -->
+        <h4>Optional Services</h4>
+        <input type="checkbox" name="optionalservices" id="collisioninsurance" value="collisioninsurance" />
+        Collision insurance is $17.00 / day for compact cars, $22.00 / day for mid-size cars, and $28.00 / day for
+        luxury cars. <br>
+        
+        Pre-paid gift card for gas stations: $100 each. <input type="number" id="numprepaidgiftcard" min="0" max="1000" value="0"/><br>
+        <div id="carwash" style="display:none;">
+            <input type="checkbox" name="optionalservices" id="dailycarwash" value="collisioninsurance" />
+            daily car wash service for the whole rental duration: $50<br>
+        </div>
+
+        <button type="submit" onclick="onSubmit();return false;" class="btn btn-primary">Submit</button>
+        <div id="quotation" style="display:none;">
+            <div id="errors" style="color: red;">
+
+            </div>
+
+            <div id="successquotation">
+                Total Price: <span id="totalrent"></span>
+            </div>
+
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./jquery.min.js"></script>
+    <script src="./dist/js/bootstrap.min.js"></script>    
+  </body>
+</html>
